@@ -10,7 +10,7 @@ The primary entities of the University are:
   > (1:M) They have grades from the exams.
 
 - Courses:
-  > (M:1) Have the subject they belong to. 
+  > (M:M) Have the subject they belong to which can be shared by multiple subjects. 
   > (1:M) One course has multiple exams. 
   > (1:M) A course has multiple classes. 
  
