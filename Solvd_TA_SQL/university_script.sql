@@ -30,11 +30,9 @@ CREATE TABLE Subjects (
 DROP TABLE IF EXISTS Courses;
 CREATE TABLE Courses (
 	id INT NOT NULL AUTO_INCREMENT,
-    Subjects_id INT NOT NULL,
     startDate DATE,
     name VARCHAR(45),
-    PRIMARY KEY (id),
-    FOREIGN KEY (Subjects_id) REFERENCES Subjects(id) ON UPDATE CASCADE ON DELETE NO ACTION
+    PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS Exams;
@@ -106,7 +104,15 @@ CREATE TABLE Grades (
     FOREIGN KEY (Exams_id) REFERENCES Exams (id) ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-
+DROP TABLE IF EXISTS Subjects_has_Courses;
+CREATE TABLE Subjects_has_Courses (
+	id INT NOT NULL,
+    Subjects_id INT NOT NULL,
+    Courses_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (Subjects_id) REFERENCES Subjects(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+    FOREIGN KEY (Courses_id) REFERENCES Courses(id) ON UPDATE CASCADE ON DELETE NO ACTION
+);
 
 
 
