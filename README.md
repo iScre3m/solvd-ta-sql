@@ -8,7 +8,7 @@ The primary entities of the University are:
 - Students:
   > (M:M) They can enroll to many courses through the enrollment.
   > (1:M) They have grades from the exams.
-  > (M:m) They attend in groups to the classes.
+  > (M:M) They attend in groups to the classes.
 
 - Courses:
   > (1:M) One course has multiple exams. 
