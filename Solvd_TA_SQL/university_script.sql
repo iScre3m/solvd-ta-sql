@@ -15,7 +15,7 @@ CREATE TABLE Subjects (
     name VARCHAR(45),
     Departments_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Departments_id) REFERENCES Departments(id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Departments_id) REFERENCES Departments(id) ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Subjects;
@@ -24,7 +24,7 @@ CREATE TABLE Subjects (
 	name VARCHAR(45),
 	Specialities_id INT NOT NULL,
 	PRIMARY KEY (id),
-    FOREIGN KEY (Specialities_id) REFERENCES Specialities(id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Specialities_id) REFERENCES Specialities(id) ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Courses;
@@ -32,6 +32,7 @@ CREATE TABLE Courses (
 	id INT NOT NULL AUTO_INCREMENT,
     startDate DATE,
     name VARCHAR(45),
+    cost DOUBLE,
     PRIMARY KEY (id)
 );
 
@@ -40,8 +41,10 @@ CREATE TABLE Exams (
 	id INT NOT NULL AUTO_INCREMENT,
     date DATE,
     Courses_id INT NOT NULL,
+    Subjects_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Subjects_id) REFERENCES Subjects (id) ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Students;
@@ -76,21 +79,33 @@ CREATE TABLE Classes (
     Courses_id INT NOT NULL,
     date DATE,
     Classrooms_id INT NOT NULL,
+    Subjects_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Professors_id) REFERENCES Professors (id) ON UPDATE CASCADE ON DELETE NO ACTION,
-    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE ON DELETE NO ACTION,
-    FOREIGN KEY (Classrooms_id) REFERENCES Classrooms (id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Professors_id) REFERENCES Professors (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Classrooms_id) REFERENCES Classrooms (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Subjects_id) REFERENCES Subjects (id) ON UPDATE CASCADE
+);
+
+DROP TABLE IF EXISTS Group_of_Students;
+CREATE TABLE Group_of_Students (
+	id INT NOT NULL,
+    Classes_id INT NOT NULL,
+    Students_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (Classes) REFERENCES Classes (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Enrollments;
 CREATE TABLE Enrollments (
 	id INT NOT NULL AUTO_INCREMENT,
-    Courses_id INT NOT NULL,
+	Courses_id INT NOT NULL,
     Students_id INT NOT NULL,
     cost DOUBLE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE ON DELETE NO ACTION,
-    FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Grades;
@@ -100,18 +115,8 @@ CREATE TABLE Grades (
     Exams_id INT NOT NULL,
     grade VARCHAR(45) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE ON DELETE NO ACTION,
-    FOREIGN KEY (Exams_id) REFERENCES Exams (id) ON UPDATE CASCADE ON DELETE NO ACTION
-);
-
-DROP TABLE IF EXISTS Subjects_has_Courses;
-CREATE TABLE Subjects_has_Courses (
-	id INT NOT NULL,
-    Subjects_id INT NOT NULL,
-    Courses_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (Subjects_id) REFERENCES Subjects(id) ON UPDATE CASCADE ON DELETE NO ACTION,
-    FOREIGN KEY (Courses_id) REFERENCES Courses(id) ON UPDATE CASCADE ON DELETE NO ACTION
+    FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE,
+    FOREIGN KEY (Exams_id) REFERENCES Exams (id) ON UPDATE CASCADE
 );
 
 
