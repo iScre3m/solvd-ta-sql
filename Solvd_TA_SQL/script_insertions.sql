@@ -74,5 +74,44 @@ VALUES
     ('2022-03-21',6,11),
     ('2022-03-21',9,3);
     
+INSERT INTO Students(firstName,lastName,email)
+VALUES
+	('Victoria','Reid','Victoria.Reid@gmail.com'),
+	('Isis','Chang','Isis.Chang@gmail.com'),
+	('Lila','Beil','Lila.Beil@gmail.com'),
+	('Azra','Mata','Azra.Mata@gmail.com'),
+	('Klay','Welsh','Klay.Welsh@gmail.com'),
+	('Cooper','Finley','Cooper.Finley@gmail.com'),
+	('Hammad','Hays','Hammad.Hays@gmail.com'),
+	('Lorenzo','Copeland','Lorenzo.Copeland@gmail.com'),
+	('Fabien','Lord','Fabien.Lord@gmail.com'),
+	('Katy','Deleon','Katy.Deleon@gmail.com'),
+	('Aila','Blair','Aila.Blair@gmail.com'),
+	('Ellis','Bassett','Ellis.Bassett@gmail.com'),
+	('Ishmael','Carter','Ishmael.Carter@gmail.com'),
+	('Tamera','Frey','Tamera.Frey@gmail.com');
+	
+INSERT INTO Grades(Students_id,Exams_id,grade)
+VALUES
+	(1,1,4),
+	(1,2,5),
+	(2,1,6),
+	(2,2,7),
+	(3,3,8),
+	(3,10,5),
+	(3,3,6),
+	(,,4),
+	(,,7),
+	(,,8),
+	(,,9),
+	(,,10),
+	(,,5),
+	(,,6),
+	(,,7),
+	(,,7),
+	(,,8),
+	(,,8),
+	(,,9),
+	(,,7);
     
     
