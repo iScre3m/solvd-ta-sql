@@ -1,12 +1,13 @@
 package db.models;
 
+import java.util.Date;
 import java.util.List;
 
 public class Class {
     private int id;
     private Professor professor;
     private Course course;
-    private String date;
+    private Date date;
     private Classroom classroom;
     private Subject subject;
 
@@ -36,11 +37,11 @@ public class Class {
         this.course = course;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

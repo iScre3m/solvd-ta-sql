@@ -1,8 +1,10 @@
 package db.models;
 
+import java.util.Date;
+
 public class Exam {
     private int id;
-    private String date;
+    private Date date;
     private Course course;
     private Subject subject;
 
@@ -14,11 +16,11 @@ public class Exam {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

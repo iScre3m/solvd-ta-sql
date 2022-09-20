@@ -1,10 +1,11 @@
 package db.models;
 
+import java.util.Date;
 import java.util.List;
 
 public class Course {
     private int id;
-    private String startDate;
+    private Date startDate;
     private String name;
     private double cost;
     private List<Student> students;
@@ -17,11 +18,11 @@ public class Course {
         this.id = id;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
