@@ -83,7 +83,7 @@ VALUES
 	('Victoria','Reid','Victoria.Reid@gmail.com'),
 	('Isis','Chang','Isis.Chang@gmail.com'),
 	('Lila','Beil','Lila.Beil@gmail.com'),
-	('Azra','Mata','Azra.Mata@gmail.com'),
+	('Azra','Sanches','Azra.Sanches@gmail.com'),
 	('Klay','Welsh','Klay.Welsh@gmail.com'),
 	('Cooper','Finley','Cooper.Finley@gmail.com'),
 	('Hammad','Hays','Hammad.Hays@gmail.com'),
@@ -209,12 +209,21 @@ VALUES
     (17,5),
     (18,5),
     (19,5),
-    (20,),
-    (21,),
-    (22,),
-    (20,),
-    (21,),
-    (22,),
-    (,),
-    ;
+    (20,6),
+    (21,6),
+    (22,6),
+    (20,7),
+    (21,7),
+    (22,7),
+    (23,6),
+    (24,6),
+    (25,6),
+    (23,7),
+    (24,7),
+    (25,7),
+    (26,4),
+    (27,4),
+    (28,4);
+    
+SELECT * FROM Courses;
 
