@@ -1,13 +1,13 @@
 package db.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Class {
     private int id;
     private Professor professor;
     private Course course;
-    private Date date;
+    private LocalDate date;
     private Classroom classroom;
     private Subject subject;
 
@@ -37,11 +37,11 @@ public class Class {
         this.course = course;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
