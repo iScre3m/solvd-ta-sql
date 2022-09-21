@@ -19,4 +19,12 @@ public class Classroom {
     public void setSize(int size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return "Classroom{" +
+                "id=" + id +
+                ", size=" + size +
+                '}';
+    }
 }

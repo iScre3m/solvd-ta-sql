@@ -40,4 +40,14 @@ public class Exam {
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
+
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "id=" + id +
+                ", date=" + date +
+                ", course=" + course +
+                ", subject=" + subject +
+                '}';
+    }
 }

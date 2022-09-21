@@ -29,4 +29,13 @@ public class Subject {
     public void setSpeciality(Speciality speciality) {
         this.speciality = speciality;
     }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", speciality=" + speciality +
+                '}';
+    }
 }

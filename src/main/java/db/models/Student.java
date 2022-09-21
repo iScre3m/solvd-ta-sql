@@ -60,4 +60,16 @@ public class Student {
     public void setClasses(List<Class> classes) {
         this.classes = classes;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", courses=" + courses +
+                ", classes=" + classes +
+                '}';
+    }
 }

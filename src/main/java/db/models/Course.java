@@ -50,4 +50,15 @@ public class Course {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", students=" + students +
+                '}';
+    }
 }
