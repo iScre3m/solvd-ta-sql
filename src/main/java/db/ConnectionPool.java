@@ -28,7 +28,7 @@ public class ConnectionPool {
             FileInputStream file = new FileInputStream("src/main/resources/sqlconfig.properties");
             properties.load(file);
         } catch (IOException e) {
-            LOGGER.error("sqlconfig properties file not found");
+            throw new RuntimeException("sqlconfig properties file not found");
         }
 
         DRIVER = properties.getProperty("driver");

@@ -42,7 +42,9 @@ public class ClassroomDAO implements IBaseDAO<Classroom> {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try{
-
+            ps = c.prepareStatement(UPDATE);
+            ps.setInt(1, object.getSize());
+            ps.setInt(2, object.getId());
 
         }catch (SQLException e){
 
