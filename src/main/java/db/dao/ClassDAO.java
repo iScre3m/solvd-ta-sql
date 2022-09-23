@@ -5,10 +5,7 @@ import db.models.Class;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class ClassDAO implements IBaseDAO<Class> {
@@ -45,17 +42,71 @@ public class ClassDAO implements IBaseDAO<Class> {
 
     @Override
     public void update(Class object) throws SQLException {
-
+        Connection c = ConnectionPool.getInstance().getConnection();
+        PreparedStatement ps = null;
+        try {
+            ps = c.prepareStatement(UPDATE);
+            ps.setInt(1, object.getProfessor().getId());
+            ps.setInt(2, object.getCourse().getId());
+            ps.setDate(3, Date.valueOf(object.getDate())); // ask how to work with LocalDate
+            ps.setInt(4, object.getClassroom().getId());
+            ps.setInt(5, object.getSubject().getId());
+            ps.setInt(6, object.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            assert ps != null;
+            ps.close();
+            ConnectionPool.getInstance().releaseConnection(c);
+        }
     }
 
     @Override
     public void delete(int id) throws SQLException {
-
+        Connection c = ConnectionPool.getInstance().getConnection();
+        PreparedStatement ps = null;
+        try{
+            ps = c.prepareStatement(DELETE);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            LOGGER.error(e);
+        }finally {
+            ConnectionPool.getInstance().releaseConnection(c);
+            try{
+                ps.close();
+            }catch (SQLException e){
+                LOGGER.error(e);
+            }
+        }
     }
 
     @Override
     public Class getById(int id) throws SQLException {
-        return null;
+        Connection c = ConnectionPool.getInstance().getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = c.prepareStatement(GET_BY_ID);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Class object = new Class(rs.getInt("Professors_id"), rs.getInt("Courses_id"),
+                        rs.getDate("date"), rs.getInt("Classrooms_id"), rs.getInt("Subjects_id"));
+                object.setId(id);
+                object.setDate(rs.getDate("date"));
+                return object;
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            assert rs != null;
+            rs.close();
+            ps.close();
+            ConnectionPool.getInstance().releaseConnection(c);
+        }
+        throw new SQLException("No data matching the ID given");
     }
 
     @Override
