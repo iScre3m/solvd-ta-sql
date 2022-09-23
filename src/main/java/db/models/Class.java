@@ -13,6 +13,16 @@ public class Class {
 
     private List<Student> students;
 
+    public Class(int id, Professor professor, Course course, LocalDate date, Classroom classroom, Subject subject, List<Student> students) {
+        this.id = id;
+        this.professor = professor;
+        this.course = course;
+        this.date = date;
+        this.classroom = classroom;
+        this.subject = subject;
+        this.students = students;
+    }
+
     public int getId() {
         return id;
     }

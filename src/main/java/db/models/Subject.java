@@ -5,6 +5,11 @@ public class Subject {
     private String name;
     private Speciality speciality;
 
+    public Subject(int id, String name, Speciality speciality) {
+        this.id = id;
+        this.name = name;
+        this.speciality = speciality;
+    }
 
     public int getId() {
         return id;

@@ -6,6 +6,13 @@ public class Professor {
     private String lastName;
     private String degree;
 
+    public Professor(int id, String firstName, String lastName, String degree) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.degree = degree;
+    }
+
     public int getId() {
         return id;
     }
