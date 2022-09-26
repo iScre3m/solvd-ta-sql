@@ -6,6 +6,9 @@ public class Grade {
     private Exam exam;
     private int grade;
 
+    public Grade() {
+    }
+
     public Grade(int id, Student student, Exam exam, int grade) {
         this.id = id;
         this.student = student;

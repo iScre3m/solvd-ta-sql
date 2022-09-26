@@ -11,6 +11,9 @@ public class Course {
     private double cost;
     private List<Student> students;
 
+    public Course() {
+    }
+
     public Course(int id, LocalDate startDate, String name, double cost, List<Student> students) {
         this.id = id;
         this.startDate = startDate;

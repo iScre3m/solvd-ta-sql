@@ -1,19 +1,22 @@
 package db.models;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Class {
     private int id;
     private Professor professor;
     private Course course;
-    private LocalDate date;
+    private Date date;
     private Classroom classroom;
     private Subject subject;
 
     private List<Student> students;
 
-    public Class(int id, Professor professor, Course course, LocalDate date, Classroom classroom, Subject subject, List<Student> students) {
+    public Class() {
+    }
+
+    public Class(int id, Professor professor, Course course, Date date, Classroom classroom, Subject subject, List<Student> students) {
         this.id = id;
         this.professor = professor;
         this.course = course;
@@ -22,6 +25,7 @@ public class Class {
         this.subject = subject;
         this.students = students;
     }
+
 
     public int getId() {
         return id;
@@ -47,11 +51,11 @@ public class Class {
         this.course = course;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

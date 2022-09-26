@@ -16,7 +16,7 @@ public class ClassroomDAO implements IBaseDAO<Classroom> {
     private final String INSERT = "INSERT INTO Classrooms(size) " + "VALUES(?)";
     private final String UPDATE = "UPDATE Classrooms SET size = ?, WHERE id = ?;";
     private final String DELETE = "DELETE FROM Classrooms WHERE id = ?";
-    private final String GET_BY_ID = "SELECT * FROM Classrooms WHERE id = ?;";
+    private final String GET_BY_ID = "SELECT * FROM Classrooms WHERE id = ?";
     private final String GET_ALL = "SELECT * FROM Classrooms ORDER BY id";
     @Override
     public void insert(Classroom object) throws SQLException {

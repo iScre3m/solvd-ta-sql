@@ -12,6 +12,9 @@ public class Student {
 
     private List<Class> classes;
 
+    public Student() {
+    }
+
     public Student(int id, String firstName, String lastName, String email, List<Course> courses, List<Class> classes) {
         this.id = id;
         this.firstName = firstName;

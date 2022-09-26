@@ -9,6 +9,9 @@ public class Exam {
     private Course course;
     private Subject subject;
 
+    public Exam() {
+    }
+
     public Exam(int id, LocalDate date, Course course, Subject subject) {
         this.id = id;
         this.date = date;

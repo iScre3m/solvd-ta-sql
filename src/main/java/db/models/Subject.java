@@ -5,6 +5,9 @@ public class Subject {
     private String name;
     private Speciality speciality;
 
+    public Subject() {
+    }
+
     public Subject(int id, String name, Speciality speciality) {
         this.id = id;
         this.name = name;

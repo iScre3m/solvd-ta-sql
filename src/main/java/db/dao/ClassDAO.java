@@ -14,7 +14,7 @@ public class ClassDAO implements IBaseDAO<Class> {
     private final String INSERT = "INSERT INTO Classes(Professors_id,Courses_id,date,Classrooms_id,Subjects_id) " + "VALUES(?,?,?,?,?)";
     private final String UPDATE = "UPDATE Classes SET Professors_id = ?, Courses_id = ?, date = ?, Classrooms_id = ?, Subjects_id = ?, WHERE id = ?;";
     private final String DELETE = "DELETE FROM Classes WHERE id = ?";
-    private final String GET_BY_ID = "SELECT * FROM Classes WHERE id = ?;";
+    private final String GET_BY_ID = "SELECT * FROM Classes WHERE id = ?";
     private final String GET_ALL = "SELECT * FROM Classes ORDER BY id";
 
     @Override
@@ -25,7 +25,7 @@ public class ClassDAO implements IBaseDAO<Class> {
             ps = c.prepareStatement(INSERT);
             ps.setInt(1, object.getProfessor().getId());
             ps.setInt(2, object.getCourse().getId());
-            ps.setDate(3, Date.valueOf(object.getDate())); // ask how to work with LocalDate
+            ps.setDate(3, (Date) object.getDate());
             ps.setInt(4, object.getClassroom().getId());
             ps.setInt(5, object.getSubject().getId());
             ps.executeUpdate();
@@ -48,7 +48,7 @@ public class ClassDAO implements IBaseDAO<Class> {
             ps = c.prepareStatement(UPDATE);
             ps.setInt(1, object.getProfessor().getId());
             ps.setInt(2, object.getCourse().getId());
-            ps.setDate(3, Date.valueOf(object.getDate())); // ask how to work with LocalDate
+            ps.setDate(3, (Date) object.getDate());
             ps.setInt(4, object.getClassroom().getId());
             ps.setInt(5, object.getSubject().getId());
             ps.setInt(6, object.getId());
@@ -92,11 +92,10 @@ public class ClassDAO implements IBaseDAO<Class> {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Class object = new Class(rs.getInt("Professors_id"), rs.getInt("Courses_id"),
-                        rs.getDate("date"), rs.getInt("Classrooms_id"), rs.getInt("Subjects_id"));
-                object.setId(id);
-                object.setDate(rs.getDate("date"));
-                return object;
+                //Class object = new Class(rs.getInt(1),rs.getInt(2), rs.getInt(3),rs.getDate(4), rs.getInt(5), rs.getInt(6), rs.getInt(7));
+                //object.setId(id);
+                //object.setDate(rs.getDate("date"));
+                return null;
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
