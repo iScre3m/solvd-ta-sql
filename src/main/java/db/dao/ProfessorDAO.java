@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProfessorDAO implements IBaseDAO<Professor> {
     private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
-    private final String INSERT = "INSERT INTO Professors VALUES(?,?,?,?);";
+    private final String INSERT = "INSERT INTO Professors(firstName,lastName,degree) VALUES(?,?,?);";
     private final String UPDATE = "UPDATE Departments SET firstName = ?, lastName = ?, degree = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Departments WHERE id = ?;";
     private final String GET_BY_ID = "SELECT * FROM Departments WHERE id = ?;";
@@ -23,10 +23,9 @@ public class ProfessorDAO implements IBaseDAO<Professor> {
     public void insert(Professor object) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         try (PreparedStatement ps = c.prepareStatement(INSERT)) {
-            ps.setInt(1, object.getId());
-            ps.setString(2, object.getFirstName());
-            ps.setString(3, object.getLastName());
-            ps.setString(4, object.getDegree());
+            ps.setString(1, object.getFirstName());
+            ps.setString(2, object.getLastName());
+            ps.setString(3, object.getDegree());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error("Failed inserting record",e);
@@ -104,7 +103,7 @@ public class ProfessorDAO implements IBaseDAO<Professor> {
                 professors.add(parser(rs));
             }
         }catch (SQLException e){
-            LOGGER.error("Getting all records from User Table Failed", e);
+            LOGGER.error("Getting all records from Professors Table Failed", e);
         }finally {
             ConnectionPool.getInstance().releaseConnection(c);
             assert rs != null;
