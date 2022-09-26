@@ -5,15 +5,12 @@ import db.models.Classroom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class ClassroomDAO implements IBaseDAO<Classroom> {
     private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
-    private final String INSERT = "INSERT INTO Classrooms(size) " + "VALUES(?)";
+    private final String INSERT = "INSERT INTO Classrooms VALUES(?,?)";
     private final String UPDATE = "UPDATE Classrooms SET size = ?, WHERE id = ?;";
     private final String DELETE = "DELETE FROM Classrooms WHERE id = ?";
     private final String GET_BY_ID = "SELECT * FROM Classrooms WHERE id = ?";
@@ -65,5 +62,11 @@ public class ClassroomDAO implements IBaseDAO<Classroom> {
     @Override
     public List<Classroom> getAll() throws SQLException {
         return null;
+    }
+    private Classroom parser(ResultSet rs) throws SQLException {
+        Classroom classroom = new Classroom();
+        classroom.setId(rs.getInt(1));
+        classroom.setSize(rs.getInt(2));
+        return classroom;
     }
 }
