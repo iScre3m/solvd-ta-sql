@@ -38,7 +38,6 @@ public class DepartmentDAO implements IBaseDAO<Department>{
     @Override
     public void update(Department object) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
-
         try (PreparedStatement ps = c.prepareStatement(UPDATE)){
             ps.setString(1, object.getName());
             ps.setInt(2, object.getId());
@@ -69,7 +68,6 @@ public class DepartmentDAO implements IBaseDAO<Department>{
         } finally {
             ConnectionPool.getInstance().releaseConnection(c);
         }
-
     }
 
     @Override
@@ -104,7 +102,7 @@ public class DepartmentDAO implements IBaseDAO<Department>{
                 departments.add(parser(rs));
             }
         }catch (SQLException e){
-            LOGGER.error(e.getMessage());
+            LOGGER.error("Getting all records from User Table Failed", e);
         }finally {
             ConnectionPool.getInstance().releaseConnection(c);
             assert rs != null;
