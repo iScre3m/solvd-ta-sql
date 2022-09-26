@@ -5,24 +5,23 @@ import java.util.List;
 
 public class Class {
     private int id;
-    private Professor professor;
-    private Course course;
+    private int professorId;
+    private int courseId;
     private Date date;
-    private Classroom classroom;
-    private Subject subject;
-
+    private int classroomId;
+    private int subjectId;
     private List<Student> students;
 
     public Class() {
     }
 
-    public Class(int id, Professor professor, Course course, Date date, Classroom classroom, Subject subject, List<Student> students) {
+    public Class(int id, int professorId, int courseId, Date date, int classroomId, int subjectId, List<Student> students) {
         this.id = id;
-        this.professor = professor;
-        this.course = course;
+        this.professorId = professorId;
+        this.courseId = courseId;
         this.date = date;
-        this.classroom = classroom;
-        this.subject = subject;
+        this.classroomId = classroomId;
+        this.subjectId = subjectId;
         this.students = students;
     }
 
@@ -35,20 +34,20 @@ public class Class {
         this.id = id;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public int getProfessorId() {
+        return professorId;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setProfessorId(int professorId) {
+        this.professorId = professorId;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public Date getDate() {
@@ -59,20 +58,20 @@ public class Class {
         this.date = date;
     }
 
-    public Classroom getClassroom() {
-        return classroom;
+    public int getClassroomId() {
+        return classroomId;
     }
 
-    public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public int getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 
     public List<Student> getStudents() {
@@ -87,11 +86,11 @@ public class Class {
     public String toString() {
         return "Class{" +
                 "id=" + id +
-                ", professor=" + professor +
-                ", course=" + course +
+                ", professor=" + professorId +
+                ", course=" + courseId +
                 ", date=" + date +
-                ", classroom=" + classroom +
-                ", subject=" + subject +
+                ", classroom=" + classroomId +
+                ", subject=" + subjectId +
                 ", students=" + students +
                 '}';
     }

@@ -6,17 +6,17 @@ import java.util.Date;
 public class Exam {
     private int id;
     private LocalDate date;
-    private Course course;
-    private Subject subject;
+    private int courseId;
+    private int subjectId;
 
     public Exam() {
     }
 
-    public Exam(int id, LocalDate date, Course course, Subject subject) {
+    public Exam(int id, LocalDate date, int courseId, int subjectId) {
         this.id = id;
         this.date = date;
-        this.course = course;
-        this.subject = subject;
+        this.courseId = courseId;
+        this.subjectId = subjectId;
     }
 
     public int getId() {
@@ -35,20 +35,20 @@ public class Exam {
         this.date = date;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public int getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 
     @Override
@@ -56,8 +56,8 @@ public class Exam {
         return "Exam{" +
                 "id=" + id +
                 ", date=" + date +
-                ", course=" + course +
-                ", subject=" + subject +
+                ", course=" + courseId +
+                ", subject=" + subjectId +
                 '}';
     }
 }

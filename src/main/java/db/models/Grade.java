@@ -2,17 +2,17 @@ package db.models;
 
 public class Grade {
     private int id;
-    private Student student;
-    private Exam exam;
+    private int studentId;
+    private int examId;
     private int grade;
 
     public Grade() {
     }
 
-    public Grade(int id, Student student, Exam exam, int grade) {
+    public Grade(int id, int studentId, int examId, int grade) {
         this.id = id;
-        this.student = student;
-        this.exam = exam;
+        this.studentId = studentId;
+        this.examId = examId;
         this.grade = grade;
     }
 
@@ -24,20 +24,20 @@ public class Grade {
         this.id = id;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public Exam getExam() {
-        return exam;
+    public int getExam() {
+        return examId;
     }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public void setExam(int examId) {
+        this.examId = examId;
     }
 
     public int getGrade() {
@@ -52,8 +52,8 @@ public class Grade {
     public String toString() {
         return "Grade{" +
                 "id=" + id +
-                ", student=" + student +
-                ", exam=" + exam +
+                ", student=" + studentId +
+                ", exam=" + examId +
                 ", grade=" + grade +
                 '}';
     }

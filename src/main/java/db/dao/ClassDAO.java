@@ -23,11 +23,11 @@ public class ClassDAO implements IBaseDAO<Class> {
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(INSERT);
-            ps.setInt(1, object.getProfessor().getId());
-            ps.setInt(2, object.getCourse().getId());
-            ps.setDate(3, (Date) object.getDate());
-            ps.setInt(4, object.getClassroom().getId());
-            ps.setInt(5, object.getSubject().getId());
+//            ps.setInt(1, object.getProfessor().getId());
+//            ps.setInt(2, object.getCourse().getId());
+//            ps.setDate(3, (Date) object.getDate());
+//            ps.setInt(4, object.getClassroom().getId());
+//            ps.setInt(5, object.getSubject().getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -46,12 +46,12 @@ public class ClassDAO implements IBaseDAO<Class> {
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(UPDATE);
-            ps.setInt(1, object.getProfessor().getId());
-            ps.setInt(2, object.getCourse().getId());
-            ps.setDate(3, (Date) object.getDate());
-            ps.setInt(4, object.getClassroom().getId());
-            ps.setInt(5, object.getSubject().getId());
-            ps.setInt(6, object.getId());
+//            ps.setInt(1, object.getProfessor().getId());
+//            ps.setInt(2, object.getCourse().getId());
+//            ps.setDate(3, (Date) object.getDate());
+//            ps.setInt(4, object.getClassroom().getId());
+//            ps.setInt(5, object.getSubject().getId());
+//            ps.setInt(6, object.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

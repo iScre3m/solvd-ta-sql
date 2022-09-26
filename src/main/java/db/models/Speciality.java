@@ -3,15 +3,15 @@ package db.models;
 public class Speciality {
     private int id;
     private String name;
-    private Department department;
+    private int departmentId;
 
     public Speciality() {
     }
 
-    public Speciality(int id, String name, Department department) {
+    public Speciality(int id, String name, int departmentId) {
         this.id = id;
         this.name = name;
-        this.department = department;
+        this.departmentId = departmentId;
     }
 
     public int getId() {
@@ -30,12 +30,12 @@ public class Speciality {
         this.name = name;
     }
 
-    public Department getDepartment() {
-        return department;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Speciality {
         return "Speciality{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", department=" + department +
+                ", department=" + departmentId +
                 '}';
     }
 }
