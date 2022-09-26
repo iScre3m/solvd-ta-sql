@@ -15,7 +15,7 @@ import java.util.List;
 public class DepartmentDAO implements IBaseDAO<Department>{
 
     private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
-    private final String INSERT = "INSERT INTO Departments VALUES(?);";
+    private final String INSERT = "INSERT INTO Departments VALUES(?,?);";
     private final String UPDATE = "UPDATE Departments SET name = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Departments WHERE id = ?;";
     private final String GET_BY_ID = "SELECT * FROM Departments WHERE id = ?;";
@@ -26,7 +26,8 @@ public class DepartmentDAO implements IBaseDAO<Department>{
     public void insert(Department object) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         try (PreparedStatement ps = c.prepareStatement(INSERT)) {
-            ps.setString(1, object.getName());
+            ps.setInt(1,object.getId());
+            ps.setString(2, object.getName());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error("Failed inserting record",e);
