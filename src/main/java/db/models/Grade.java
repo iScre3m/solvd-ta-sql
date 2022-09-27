@@ -32,11 +32,11 @@ public class Grade {
         this.studentId = studentId;
     }
 
-    public int getExam() {
+    public int getExamId() {
         return examId;
     }
 
-    public void setExam(int examId) {
+    public void setExamId(int examId) {
         this.examId = examId;
     }
 

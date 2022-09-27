@@ -2,7 +2,6 @@ package db.dao;
 
 import db.ConnectionPool;
 import db.models.Exam;
-import db.models.Subject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -116,7 +115,7 @@ public class ExamDAO implements IBaseDAO<Exam>{
         exam.setId(rs.getInt(1));
         exam.setDate(rs.getDate(2));
         exam.setCourseId(rs.getInt(3));
-        exam.setCourseId(rs.getInt(4));
+        exam.setSubjectId(rs.getInt(4));
         return exam;
     }
 }
