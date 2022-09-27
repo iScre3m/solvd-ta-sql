@@ -1,18 +1,17 @@
 package db.models;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Exam {
     private int id;
-    private LocalDate date;
+    private Date date;
     private int courseId;
     private int subjectId;
 
     public Exam() {
     }
 
-    public Exam(int id, LocalDate date, int courseId, int subjectId) {
+    public Exam(int id, Date date, int courseId, int subjectId) {
         this.id = id;
         this.date = date;
         this.courseId = courseId;
@@ -27,11 +26,11 @@ public class Exam {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

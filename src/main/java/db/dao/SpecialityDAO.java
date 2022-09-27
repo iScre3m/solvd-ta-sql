@@ -1,7 +1,6 @@
 package db.dao;
 
 import db.ConnectionPool;
-import db.models.Department;
 import db.models.Speciality;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
