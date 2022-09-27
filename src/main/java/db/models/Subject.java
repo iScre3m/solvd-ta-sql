@@ -1,8 +1,15 @@
 package db.models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "subject")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Subject {
+    @XmlElement(name = "id")
     private int id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "specialityId")
     private int specialityId;
 
     public Subject() {
