@@ -1,0 +1,14 @@
+[ {
+  "id": "1",
+  "name": "Economic Sciences",
+  "specialityId": "1"
+}, {
+  "id": "2",
+  "name": "Engineering",
+  "specialityId": "1"
+}, {
+  "id": "3",
+  "name": "Administration",
+  "specialityId": "2"
+}
+]

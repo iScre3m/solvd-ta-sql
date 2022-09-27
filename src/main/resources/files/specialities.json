@@ -1,0 +1,10 @@
+[ {
+  "id": "1",
+  "name": "Informatics Engineering",
+  "departmentId": "2"
+}, {
+  "id": "2",
+  "name": "Accountant",
+  "departmentId": "1"
+}
+]
