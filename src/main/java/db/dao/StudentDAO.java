@@ -14,7 +14,7 @@ import java.util.List;
 
 public class StudentDAO implements IBaseDAO<Student>{
 
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(StudentDAO.class.getName());
     private final String INSERT = "INSERT INTO Students(firstName,lastName,email) VALUES(?,?,?);";
     private final String UPDATE = "UPDATE Students SET firstName = ?, lastName = ?, email = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Students WHERE id = ?;";

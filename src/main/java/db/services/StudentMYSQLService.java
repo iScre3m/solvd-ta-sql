@@ -42,9 +42,9 @@ class PlainMySQLService(){
 
 	public Plain getPlainById(int id){
 		Plain plain = plainDAO.readById(id);
-		List<Passenger> passengers = passengerDAO.readById(id);
+		List<Passenger> passengers = passengerDAO.readByPlainId(id); create readByPlainId function in passengerDAO
 		plain.setPassengers(passengers);
-		Pilot pilot = pilotDAO.readById(id);
+		Pilot pilot = pilotDAO.readByPlainId(id);
 		plain.setPilot(pilot);
 		return plain;
 	}

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialityDAO implements IBaseDAO<Speciality> {
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(SpecialityDAO.class.getName());
     private final String INSERT = "INSERT INTO Specialities(name,departments_id) VALUES(?,?);";
     private final String UPDATE = "UPDATE Specialities SET name = ?, departments_id = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Specialities WHERE id = ?;";

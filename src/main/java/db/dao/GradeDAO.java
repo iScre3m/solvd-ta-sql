@@ -12,7 +12,7 @@ import java.util.List;
 
 public class GradeDAO implements IBaseDAO<Grade> {
 
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(GradeDAO.class.getName());
     private final String INSERT = "INSERT INTO Grades(students_id,exams_id,grade) VALUES(?,?,?);";
     private final String UPDATE = "UPDATE Grades SET students_id = ?, exams_id = ?, grade = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Grades WHERE id = ?;";

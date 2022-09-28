@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SubjectDAO implements IBaseDAO<Subject>{
 
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(SubjectDAO.class.getName());
     private final String INSERT = "INSERT INTO Subjects(name,specialities_id) VALUES(?,?);";
     private final String UPDATE = "UPDATE Subjects SET name = ?, specialities_id = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Subjects WHERE id = ?;";

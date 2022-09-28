@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClassroomDAO implements IBaseDAO<Classroom> {
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ClassroomDAO.class.getName());
     private final String INSERT = "INSERT INTO Classrooms(size) VALUES(?);";
     private final String UPDATE = "UPDATE Classrooms SET size = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Classrooms WHERE id = ?;";

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ExamDAO implements IBaseDAO<Exam>{
 
-    private static final Logger LOGGER = LogManager.getLogger(ClassDAO.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ExamDAO.class.getName());
     private final String INSERT = "INSERT INTO Exams(date,courses_id,subjects_id) VALUES(?,?,?);";
     private final String UPDATE = "UPDATE Exams SET date = ?, courses_id = ?, subjects_id = ? WHERE id = ?;";
     private final String DELETE = "DELETE FROM Exams WHERE id = ?;";

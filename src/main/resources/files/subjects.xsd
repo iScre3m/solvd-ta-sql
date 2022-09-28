@@ -4,7 +4,7 @@
     <xs:element name="subjects">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="subject">
+                <xs:element name="subject" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="id" type="xs:int"/>
