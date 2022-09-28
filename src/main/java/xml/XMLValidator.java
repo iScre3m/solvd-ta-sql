@@ -17,8 +17,8 @@ import java.io.File;
 import javax.xml.transform.stream.StreamSource;
 
 
-public class XSDValidator {
-    private static final Logger LOGGER = LogManager.getLogger(XSDValidator.class);
+public class XMLValidator {
+    private static final Logger LOGGER = LogManager.getLogger(XMLValidator.class);
 
     public static void main(String[] args) {
 
