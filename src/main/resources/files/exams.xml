@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<exams>
+    <exam>
+        <id>1</id>
+        <date>2022-10-14</date>
+        <courseId>1</courseId>
+        <subjectId>8</subjectId>
+    </exam>
+    <exam>
+        <id>2</id>
+        <date>2022-10-15</date>
+        <courseId>2</courseId>
+        <subjectId>8</subjectId>
+    </exam>
+    <exam>
+        <id>3</id>
+        <date>2022-10-25</date>
+        <courseId>5</courseId>
+        <subjectId>11</subjectId>
+    </exam>
+</exams>

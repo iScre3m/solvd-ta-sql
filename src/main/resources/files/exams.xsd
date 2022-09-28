@@ -1,14 +1,16 @@
 <?parsers version="1.0"?>
 <xs:schema
         xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="departments">
+    <xs:element name="exams">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="department" minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="exam" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="id" type="xs:int"/>
-                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="date" type="xs:date"/>
+                            <xs:element name="courseId" type="xs:int"/>
+                            <xs:element name="subjectId" type="xs:int"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

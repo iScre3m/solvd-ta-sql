@@ -1,13 +1,11 @@
 package db.models;
 
-import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "departments")
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Department {
-    @XmlElement(name = "id")
+
     private int id;
-    @XmlElement(name = "name")
+
     private String name;
 
     public Department(int id, String name) {

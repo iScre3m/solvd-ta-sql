@@ -1,11 +1,20 @@
 package db.models;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-
+@XmlRootElement(name = "exam")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Exam {
+    @XmlElement(name = "id")
     private int id;
+    @XmlElement(name = "date")
     private Date date;
+    @XmlElement(name = "courseId")
     private int courseId;
+    @XmlElement(name = "subjectId")
     private int subjectId;
 
     public Exam() {
