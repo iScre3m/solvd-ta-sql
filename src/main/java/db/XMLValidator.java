@@ -1,4 +1,4 @@
-package xml;
+package db;
 
 //Source https://www.tutorialspoint.com/xsd/xsd_validation.htm
 

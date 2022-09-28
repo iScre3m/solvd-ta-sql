@@ -1,12 +1,12 @@
 package db.models;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 import java.util.List;
 
 public class Course {
     private int id;
-    private LocalDate startDate;
+    private Date startDate;
     private String name;
     private double cost;
     private List<Student> students;
@@ -14,7 +14,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(int id, LocalDate startDate, String name, double cost, List<Student> students) {
+    public Course(int id, Date startDate, String name, double cost, List<Student> students) {
         this.id = id;
         this.startDate = startDate;
         this.name = name;
@@ -30,11 +30,11 @@ public class Course {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
