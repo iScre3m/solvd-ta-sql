@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "subject")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "name", "specialityId" })
 public class Subject {
     @XmlElement(name = "id")
     private int id;

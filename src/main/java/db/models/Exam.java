@@ -1,12 +1,10 @@
 package db.models;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.Date;
 @XmlRootElement(name = "exam")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "date", "courseId", "subjectId" })
 public class Exam {
     @XmlElement(name = "id")
     private int id;
