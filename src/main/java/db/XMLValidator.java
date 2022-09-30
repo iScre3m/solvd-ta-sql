@@ -22,12 +22,12 @@ public class XMLValidator {
 
     public static void main(String[] args) {
 
-        LOGGER.info("specialities.xml validates against specialities.xsd? " + Validator("src/main/resources/files/specialities.xsd", "src/main/resources/files/specialities.xml"));
-        LOGGER.info("subjects.xml validates against subjects.xsd? " + Validator("src/main/resources/files/subjects.xsd", "src/main/resources/files/subjects.xml"));
-        LOGGER.info("exams.xml validates against exams.xsd? " + Validator("src/main/resources/files/exams.xsd", "src/main/resources/files/exams.xml"));
+        LOGGER.info("specialities.xml validates against specialities.xsd? " + validateXML("src/main/resources/files/specialities.xsd", "src/main/resources/files/specialities.xml"));
+        LOGGER.info("subjects.xml validates against subjects.xsd? " + validateXML("src/main/resources/files/subjects.xsd", "src/main/resources/files/subjects.xml"));
+        LOGGER.info("exams.xml validates against exams.xsd? " + validateXML("src/main/resources/files/exams.xsd", "src/main/resources/files/exams.xml"));
     }
 
-    public static boolean Validator(String xsdPath, String xmlPath) {
+    public static boolean validateXML(String xsdPath, String xmlPath) {
         try {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(xsdPath));
@@ -40,7 +40,6 @@ public class XMLValidator {
             e.printStackTrace();
             LOGGER.error("Error: " + e.getMessage());
         }
-
         return true;
     }
 }

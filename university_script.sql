@@ -102,7 +102,6 @@ CREATE TABLE Enrollments (
 	id INT NOT NULL AUTO_INCREMENT,
 	Courses_id INT NOT NULL,
     Students_id INT NOT NULL,
-    cost DOUBLE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (Courses_id) REFERENCES Courses (id) ON UPDATE CASCADE,
     FOREIGN KEY (Students_id) REFERENCES Students (id) ON UPDATE CASCADE
