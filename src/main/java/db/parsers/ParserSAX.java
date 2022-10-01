@@ -1,7 +1,6 @@
 package db.parsers;
 
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -12,8 +11,8 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 
-public class Parser {
-    static Logger LOGGER = LogManager.getLogger(Parser.class.getName());
+public class ParserSAX {
+    static Logger LOGGER = LogManager.getLogger(ParserSAX.class.getName());
 
     public <T extends DefaultHandler> T parse(String path, T handler) {
         SAXParserFactory factory = SAXParserFactory.newInstance();

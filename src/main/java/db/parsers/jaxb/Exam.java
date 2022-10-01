@@ -1,34 +1,20 @@
-package db.models;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import db.parsers.DateAdapter;
+package db.parsers.jaxb;
 
 
 import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 
-@JsonPropertyOrder({"id","date","courseId","subjectId"})
 @XmlRootElement(name = "exam")
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "id", "date", "courseId", "subjectId" })
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Exam {
-    @JsonProperty
-    @XmlElement(name = "id")
+
     private int id;
 
-    @JsonProperty
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    @XmlElement(name = "date")
-    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date date;
-    @JsonProperty
-    @XmlElement(name = "courseId")
+
     private int courseId;
-    @JsonProperty
-    @XmlElement(name = "subjectId")
+
     private int subjectId;
 
     public Exam() {

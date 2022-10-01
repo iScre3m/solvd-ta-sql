@@ -14,7 +14,7 @@ public class ExamHandler extends DefaultHandler {
 
     private StringBuilder element;
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
     @Override
@@ -23,17 +23,15 @@ public class ExamHandler extends DefaultHandler {
         exam = new Exam();
     }
 
-    @Override
-    public void endDocument() throws SAXException {
-        System.out.println("End document");
-    }
+
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch (qName) {
             case "id":
-            case "name":
-            case "specialityId":
+            case "date":
+            case "courseId":
+            case "subjectId":
                 element = new StringBuilder();
                 break;
         }
@@ -47,7 +45,7 @@ public class ExamHandler extends DefaultHandler {
                 break;
             case "date":
                 try {
-                    exam.setDate(dateFormat.parse(element.toString()));
+                    exam.setDate(dateFormat.parse(String.valueOf(element)));
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
@@ -70,7 +68,12 @@ public class ExamHandler extends DefaultHandler {
         }
     }
 
-    public Exam getSubject() {
+    @Override
+    public void endDocument() throws SAXException {
+        System.out.println("End document");
+    }
+
+    public Exam getExam() {
         return this.exam;
     }
 }
