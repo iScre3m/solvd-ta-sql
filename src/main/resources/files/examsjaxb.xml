@@ -2,13 +2,13 @@
 <exams>
     <exam>
         <id>1</id>
-        <date>2022-10-14T00:00:00-03:00</date>
+        <date>2022-10-14</date>
         <courseId>1</courseId>
         <subjectId>8</subjectId>
     </exam>
     <exam>
         <id>2</id>
-        <date>2022-10-15T00:00:00-03:00</date>
+        <date>2022-10-15</date>
         <courseId>2</courseId>
         <subjectId>8</subjectId>
     </exam>

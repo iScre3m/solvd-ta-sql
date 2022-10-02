@@ -1,7 +1,7 @@
 package db.parsers.jaxb;
 
-import java.util.ArrayList;
 import java.util.List;
+import db.models.Exam;
 
 import javax.xml.bind.annotation.*;
 
