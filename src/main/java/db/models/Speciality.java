@@ -2,7 +2,7 @@ package db.models;
 
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "specialities")
+@XmlRootElement(name = "speciality")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "id", "name", "departmentId" })
 public class Speciality {

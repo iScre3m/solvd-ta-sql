@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<subjects>
+    <subject>
+        <id>1</id>
+        <name>Mathematics</name>
+        <specialityId>1</specialityId>
+    </subject>
+    <subject>
+        <id>2</id>
+        <name>Computing</name>
+        <specialityId>1</specialityId>
+    </subject>
+    <subject>
+        <id>3</id>
+        <name>Administration</name>
+        <specialityId>2</specialityId>
+    </subject>
+</subjects>

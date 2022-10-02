@@ -16,20 +16,9 @@ public class Jaxb {
     }
 
     public <T> T unmarshalling(Class<T> c, String filePath) throws JAXBException {
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         JAXBContext jaxbContext = JAXBContext.newInstance(c);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         return (T) unmarshaller.unmarshal(new File(filePath));
 
-
-//        for(Exam exam : exams.getExams())
-//        {
-//            System.out.println(exam.getId());
-//            System.out.println(simpleDateFormat.format(exam.getDate()));
-//            System.out.println(exam.getCourseId());
-//            System.out.println(exam.getSubjectId());
-//            System.out.println("-----------");
-//        }
     }
 }
