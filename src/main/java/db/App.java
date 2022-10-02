@@ -3,18 +3,24 @@ package db;
 import db.models.Exam;
 import db.models.Speciality;
 import db.models.Subject;
-import db.parsers.*;
 import db.parsers.jaxb.Exams;
 import db.parsers.jaxb.Jaxb;
 import db.parsers.jaxb.Specialities;
 import db.parsers.jaxb.Subjects;
+import db.parsers.sax.ExamHandler;
+import db.parsers.sax.SpecialityHandler;
+import db.parsers.sax.SubjectHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     static Logger LOGGER = LogManager.getLogger(App.class.getName());
@@ -28,21 +34,30 @@ public class App {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
         xmlJaxbParsing();
-        //xmlSaxParsing();
+        xmlSaxParsing();
 
     }
 
-    public static void xmlSaxParsing(){
-        Exam exam = new ParserSAX().parse(EXAM_XML_PATH, new ExamHandler()).getExam();
-        System.out.printf("Parsed exam: %s\n", exam);
-        Speciality speciality = new ParserSAX().parse(SPECIALITY_XML_PATH, new SpecialityHandler()).getSpeciality();
-        System.out.printf("Parsed speciality: %s\n", speciality);
-        Subject subject = new ParserSAX().parse(SUBJECT_XML_PATH, new SubjectHandler()).getSubject();
-        System.out.printf("Parsed speciality: %s\n", subject);
-    }
+    public static void xmlSaxParsing() throws ParserConfigurationException, IOException, SAXException {
+        ExamHandler examHandler = new ExamHandler();
+        List<Exam> exams = examHandler.readDataFromXML(EXAM_XML_PATH);
+        for (Exam exam: exams) {
+            System.out.println(exam);
+        }
+        SpecialityHandler specialityHandler = new SpecialityHandler();
+        List<Speciality> specialities = specialityHandler.readDataFromXML(SPECIALITY_XML_PATH);
+        for (Speciality speciality: specialities) {
+            System.out.println(speciality);
+        }
+        SubjectHandler subjectHandler = new SubjectHandler();
+        List<Subject> subjects = subjectHandler.readDataFromXML(SUBJECT_XML_PATH);
+        for (Subject subject: subjects) {
+            System.out.println(subject);
+        }
+        }
 
     public static void xmlJaxbParsing(){
         try
@@ -79,29 +94,21 @@ public class App {
             Exams examsUnmarshalled = jaxb.unmarshalling(Exams.class,EXAM_JAXB_XML);
             for(Exam examI : examsUnmarshalled.getExams())
             {
-                System.out.println("Exam: " + examI.getId());
-                System.out.println("Date: " + simpleDateFormat.format(examI.getDate()));
-                System.out.println("CourseId: " + examI.getCourseId());
-                System.out.println("SubjectId: " + examI.getSubjectId());
-
+                System.out.println(examI);
             }
 
             jaxb.marshalling(subjects,SUBJ_JAXB_XML);
             Subjects subjectsUnmarshalled = jaxb.unmarshalling(Subjects.class,SUBJ_JAXB_XML);
             for(Subject subjectI : subjectsUnmarshalled.getSubjects())
             {
-                System.out.println("Subject: " + subjectI.getId());
-                System.out.println("Name: " + subjectI.getName());
-                System.out.println("SpecialityId: " + subjectI.getSpecialityId());
+                System.out.println(subjectI);
             }
 
             jaxb.marshalling(specialities,SPEC_JAXB_XML);
             Specialities specialitiesUnmarshalled = jaxb.unmarshalling(Specialities.class,SPEC_JAXB_XML);
             for(Speciality specialityI : specialitiesUnmarshalled.getSpecialities())
             {
-                System.out.println("Speciality: " + specialityI.getId());
-                System.out.println("Name: " + specialityI.getName());
-                System.out.println("DepartmentId: " + specialityI.getDepartmentId());
+                System.out.println(specialityI);
             }
 
         } catch (ParseException | JAXBException e) {

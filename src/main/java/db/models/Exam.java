@@ -8,6 +8,8 @@ import db.parsers.DateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @JsonPropertyOrder({"id","date","courseId","subjectId"})
@@ -75,9 +77,10 @@ public class Exam {
 
     @Override
     public String toString() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return "Exam{" +
                 "id=" + id +
-                ", date=" + date +
+                ", date=" + simpleDateFormat.format(date) +
                 ", course=" + courseId +
                 ", subject=" + subjectId +
                 '}';
