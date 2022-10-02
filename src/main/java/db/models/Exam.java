@@ -8,7 +8,6 @@ import db.parsers.DateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

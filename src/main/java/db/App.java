@@ -28,16 +28,20 @@ public class App {
     private static final String SPECIALITY_XML_PATH = "src/main/resources/files/specialities.xml";
     private static final String SUBJECT_XML_PATH = "src/main/resources/files/subjects.xml";
 
+    private static final String SUBJECT_JSON_PATH = "src/main/resources/files/subjects.json";
+
     private static final String EXAM_JAXB_XML = "src/main/resources/files/examsjaxb.xml";
     private static final String SUBJ_JAXB_XML = "src/main/resources/files/subjectsjaxb.xml";
     private static final String SPEC_JAXB_XML = "src/main/resources/files/specialitiesjaxb.xml";
+
+    private static final String SUBJ_JACKSON_JSON = "src/main/resources/files/subjectsjackson.json";
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
-        xmlJaxbParsing();
-        xmlSaxParsing();
+        //xmlJaxbParsing();
+        //xmlSaxParsing();
 
     }
 
@@ -115,6 +119,7 @@ public class App {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }
