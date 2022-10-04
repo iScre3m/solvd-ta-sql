@@ -3,25 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="remotedb.properties"/>
+    <properties resource="sqlconfig.properties"/>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
-                <property name="protocol" value="${protocol}"/>
-                <property name="host" value="${host}"/>
-                <property name="port" value="${port}"/>
-                <property name="dbname" value="${dbname}"/>
-                <property name="user" value="${user}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
                 <property name="password" value="${password}"/>
-                <property name="pool_size" value="${pool_size}"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper class="IExamMapper"/>
-        <mapper class="ISpecialityMapper"/>
-        <mapper class="ISubjectMapper"/>
+        <mapper class="db.parsers.mybatis.ISubjectMapper"/>
     </mappers>
 </configuration>

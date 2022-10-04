@@ -12,20 +12,21 @@ import java.io.InputStream;
 
 public class MyBatisFactory {
     private static final Logger LOGGER = LogManager.getLogger(MyBatisFactory.class.getName());
-    private static SqlSessionFactory ssf = null;
+    private static SqlSessionFactory sqlSessionFactory = null;
 
     static {
-        String resource = "src/main/resources/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         try {
             InputStream inputStream = Resources.getResourceAsStream(resource);
-            ssf = new SqlSessionFactoryBuilder().build(inputStream);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {
+            LOGGER.error("Can't connect to resources");
             LOGGER.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
 
     public static SqlSession getSession() {
-        return ssf.openSession();
+        return sqlSessionFactory.openSession();
     }
 }

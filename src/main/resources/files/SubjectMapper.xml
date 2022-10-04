@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="src/main/java/db/parsers/mybatis/ISubjectMapper.java">
+
+    <resultMap type="subject" id="subjectResultMap">
+        <result column="name" property="releaseDate" />
+        <result column="specialities_id" property="specialities_id" />
+    </resultMap>
+
+    <select id="getById" parameterType="Subject" resultMap="subjectResultMap">
+        SELECT * FROM PERSON WHERE ID = #{id}
+    </select>
+</mapper>

@@ -15,7 +15,7 @@ public class ConnectionPool {
     private static ConnectionPool instance;
     private final String DRIVER;
     private final String URL;
-    private final String USERNAME;
+    private final String USER;
     private final String PASSWORD;
     private final int POOL_SIZE;
     private final AtomicInteger actualSize = new AtomicInteger(0);
@@ -24,7 +24,7 @@ public class ConnectionPool {
     private ConnectionPool() {
         Properties properties = new Properties();
         try {
-            System.out.println(System.getProperty("username.dir"));
+            System.out.println(System.getProperty("user.dir"));
             FileInputStream file = new FileInputStream("src/main/resources/sqlconfig.properties");
             properties.load(file);
         } catch (IOException e) {
@@ -33,7 +33,7 @@ public class ConnectionPool {
 
         DRIVER = properties.getProperty("driver");
         URL = properties.getProperty("url");
-        USERNAME = properties.getProperty("username");
+        USER = properties.getProperty("user");
         PASSWORD = properties.getProperty("password");
         POOL_SIZE = Integer.parseInt(properties.getProperty("poolSize"));
 
@@ -56,7 +56,7 @@ public class ConnectionPool {
     public Connection getConnection() {
         if (actualSize.get() < POOL_SIZE) {
             try {
-                connectionPool.add(DriverManager.getConnection(URL, USERNAME, PASSWORD));
+                connectionPool.add(DriverManager.getConnection(URL, USER, PASSWORD));
                 actualSize.incrementAndGet();
             } catch (SQLException e) {
                 LOGGER.error(e);

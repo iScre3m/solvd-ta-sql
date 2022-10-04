@@ -7,6 +7,8 @@ import db.parsers.jaxb.Exams;
 import db.parsers.jaxb.Jaxb;
 import db.parsers.jaxb.Specialities;
 import db.parsers.jaxb.Subjects;
+import db.parsers.mybatis.SpecialityDAO;
+import db.parsers.mybatis.SubjectDAO;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
@@ -42,6 +44,8 @@ public class App {
 
         //xmlJaxbParsing();
         //xmlSaxParsing();
+        Subject subject = new SubjectDAO().getById(1);
+        System.out.println(subject);
 
     }
 
