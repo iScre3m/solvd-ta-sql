@@ -33,7 +33,7 @@ public interface ISubjectMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "specialities_id", column = "specialities_id"),
+            @Result(property = "specialityId", column = "specialities_id"),
     })
     List<Subject> getAll();
 

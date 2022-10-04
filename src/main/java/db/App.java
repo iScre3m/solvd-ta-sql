@@ -44,8 +44,6 @@ public class App {
 
         //xmlJaxbParsing();
         //xmlSaxParsing();
-        Subject subject = new SubjectDAO().getById(1);
-        System.out.println(subject);
 
     }
 

@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface ISpecialityMapper {
     String INSERT = "INSERT INSERT INTO Specialities(name,departments_id) VALUES(${name},${departments_id});";
-    String UPDATE = "UPDATE Subjects SET name ${name}, departments_id = ${departments_id} WHERE id = ${id};";
-    String DELETE = "DELETE FROM Subjects WHERE id = ${id};";
-    String GET_BY_ID = "SELECT * FROM Subjects WHERE id = ${id};";
-    String GET_ALL = "SELECT * FROM Subjects ORDER BY id;";
+    String UPDATE = "UPDATE Specialities SET name ${name}, departments_id = ${departments_id} WHERE id = ${id};";
+    String DELETE = "DELETE FROM Specialities WHERE id = ${id};";
+    String GET_BY_ID = "SELECT * FROM Specialities WHERE id = ${id};";
+    String GET_ALL = "SELECT * FROM Specialities ORDER BY id;";
 
     @Insert(INSERT)
     void insert(Speciality speciality);
@@ -27,7 +27,7 @@ public interface ISpecialityMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "departments_id", column = "departments_id"),
+            @Result(property = "departmentId", column = "departments_id"),
     })
     Speciality getById(int id);
 
@@ -35,7 +35,7 @@ public interface ISpecialityMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "departments_id", column = "departments_id"),
+            @Result(property = "departmentId", column = "departments_id"),
     })
     List<Speciality> getAll();
 }

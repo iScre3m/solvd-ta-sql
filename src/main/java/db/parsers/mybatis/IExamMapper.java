@@ -25,8 +25,8 @@ public interface IExamMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "date", column = "date"),
-            @Result(property = "courses_id", column = "courses_id"),
-            @Result(property = "subjects_id", column = "subjects_id"),
+            @Result(property = "courseId", column = "courses_id"),
+            @Result(property = "subjectId", column = "subjects_id"),
     })
     Exam getById(int id);
 
@@ -34,8 +34,8 @@ public interface IExamMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "date", column = "date"),
-            @Result(property = "courses_id", column = "courses_id"),
-            @Result(property = "subjects_id", column = "subjects_id"),
+            @Result(property = "courseId", column = "courses_id"),
+            @Result(property = "subjectId", column = "subjects_id"),
     })
     List<Exam> getAll();
 }

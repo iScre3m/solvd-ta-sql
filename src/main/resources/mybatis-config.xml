@@ -17,5 +17,7 @@
     </environments>
     <mappers>
         <mapper class="db.parsers.mybatis.ISubjectMapper"/>
+        <mapper class="db.parsers.mybatis.ISpecialityMapper"/>
+        <mapper class="db.parsers.mybatis.IExamMapper"/>
     </mappers>
 </configuration>
