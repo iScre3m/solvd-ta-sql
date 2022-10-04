@@ -12,6 +12,7 @@ import db.parsers.mybatis.SubjectDAO;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
+import db.services.StudentMYSQLService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -19,6 +20,7 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,10 +42,13 @@ public class App {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException {
 
         //xmlJaxbParsing();
         //xmlSaxParsing();
+        StudentMYSQLService student = new StudentMYSQLService();
+        student.getStudentById(2);
+
 
     }
 
@@ -51,17 +56,17 @@ public class App {
         ExamHandler examHandler = new ExamHandler();
         List<Exam> exams = examHandler.readDataFromXML(EXAM_XML_PATH);
         for (Exam exam: exams) {
-            System.out.println(exam);
+            LOGGER.info(exam);
         }
         SpecialityHandler specialityHandler = new SpecialityHandler();
         List<Speciality> specialities = specialityHandler.readDataFromXML(SPECIALITY_XML_PATH);
         for (Speciality speciality: specialities) {
-            System.out.println(speciality);
+            LOGGER.info(speciality);
         }
         SubjectHandler subjectHandler = new SubjectHandler();
         List<Subject> subjects = subjectHandler.readDataFromXML(SUBJECT_XML_PATH);
         for (Subject subject: subjects) {
-            System.out.println(subject);
+            LOGGER.info(subject);
         }
         }
 
@@ -100,14 +105,14 @@ public class App {
             Exams examsUnmarshalled = jaxb.unmarshalling(Exams.class,EXAM_JAXB_XML);
             for(Exam examI : examsUnmarshalled.getExams())
             {
-                System.out.println(examI);
+                LOGGER.info(examI);
             }
 
             jaxb.marshalling(subjects,SUBJ_JAXB_XML);
             Subjects subjectsUnmarshalled = jaxb.unmarshalling(Subjects.class,SUBJ_JAXB_XML);
             for(Subject subjectI : subjectsUnmarshalled.getSubjects())
             {
-                System.out.println(subjectI);
+                LOGGER.info(subjectI);
             }
 
             jaxb.marshalling(specialities,SPEC_JAXB_XML);

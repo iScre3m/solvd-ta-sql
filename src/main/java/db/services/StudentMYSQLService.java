@@ -14,9 +14,13 @@ public class StudentMYSQLService {
     CourseDAO courseDAO;
     ClassDAO classDAO;
 
+    public StudentMYSQLService() {
+    }
+
     public Student getStudentById(int id) throws SQLException {
         Student student = studentDAO.getById(id);
-        //List<Course> courses = courseDAO.getById(id);
+        List<Course> courses = courseDAO.getByStudentId(id);
+        student.setCourses(courses);
         return student;
     }
 

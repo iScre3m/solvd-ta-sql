@@ -125,4 +125,8 @@ public class ClassDAO implements IBaseDAO<Class> {
         clas.setSubjectId(rs.getInt(6));
         return clas;
     }
+
+    public List<Class> getByStudentId(int id){
+        return null;
+    }
 }
