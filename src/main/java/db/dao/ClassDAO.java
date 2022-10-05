@@ -2,6 +2,7 @@ package db.dao;
 
 import db.ConnectionPool;
 import db.models.Class;
+import db.models.Course;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,6 +18,8 @@ public class ClassDAO implements IBaseDAO<Class> {
     private final String DELETE = "DELETE FROM Classes WHERE id = ?;";
     private final String GET_BY_ID = "SELECT * FROM Classes WHERE id = ?;";
     private final String GET_ALL = "SELECT * FROM Classes ORDER BY id;";
+
+    private final String GET_BY_STUDENT_ID = "SELECT classes.id, classes.professors_id,classes.courses_id,classes.date,classes.classrooms_id,classes.subjects_id FROM classes JOIN group_of_students ON group_of_students.classes_id = classes.id JOIN students ON students.id = group_of_students.students_id AND students.id = ?";
 
     @Override
     public void insert(Class object) throws SQLException {
@@ -126,7 +129,23 @@ public class ClassDAO implements IBaseDAO<Class> {
         return clas;
     }
 
-    public List<Class> getByStudentId(int id){
-        return null;
+    public List<Class> getByStudentId(int id) throws SQLException {
+        Connection c = ConnectionPool.getInstance().getConnection();
+        ResultSet rs = null;
+        ArrayList<Class> classes = new ArrayList<>();
+        try(PreparedStatement ps = c.prepareStatement(GET_BY_STUDENT_ID)){
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                classes.add(parser(rs));
+            }
+        }catch (SQLException e){
+            LOGGER.error("Getting Classes by student id failed", e);
+        }finally {
+            ConnectionPool.getInstance().releaseConnection(c);
+            assert rs != null;
+            rs.close();
+        }
+        return classes;
     }
 }

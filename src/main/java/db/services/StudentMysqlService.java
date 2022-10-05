@@ -3,25 +3,45 @@ package db.services;
 import db.dao.ClassDAO;
 import db.dao.CourseDAO;
 import db.dao.StudentDAO;
+import db.models.Class;
 import db.models.Course;
 import db.models.Student;
-
 import java.sql.SQLException;
 import java.util.List;
 
-public class StudentMYSQLService {
-    StudentDAO studentDAO;
-    CourseDAO courseDAO;
-    ClassDAO classDAO;
+public class StudentMysqlService {
 
-    public StudentMYSQLService() {
-    }
+    private StudentDAO studentDAO = new StudentDAO();
+    private CourseDAO courseDAO = new CourseDAO();
+    private ClassDAO classDAO = new ClassDAO();
 
-    public Student getStudentById(int id) throws SQLException {
+
+    public Student getById(int id) throws SQLException {
         Student student = studentDAO.getById(id);
+
         List<Course> courses = courseDAO.getByStudentId(id);
         student.setCourses(courses);
+
+        List<Class> classes = classDAO.getByStudentId(id);
+        student.setClasses(classes);
+
         return student;
+    }
+
+    public void delete(int id) throws SQLException {
+        studentDAO.delete(id);
+    }
+
+    public void insert(Student student) throws SQLException {
+        studentDAO.insert(student);
+    }
+
+    public void update(Student student) throws SQLException {
+        studentDAO.update(student);
+    }
+
+    public List<Student> getAll() throws SQLException {
+        return studentDAO.getAll();
     }
 
     /* Example

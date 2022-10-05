@@ -2,17 +2,16 @@ package db;
 
 import db.models.Exam;
 import db.models.Speciality;
+import db.models.Student;
 import db.models.Subject;
 import db.parsers.jaxb.Exams;
 import db.parsers.jaxb.Jaxb;
 import db.parsers.jaxb.Specialities;
 import db.parsers.jaxb.Subjects;
-import db.parsers.mybatis.SpecialityDAO;
-import db.parsers.mybatis.SubjectDAO;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
-import db.services.StudentMYSQLService;
+import db.services.StudentMysqlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -46,9 +45,7 @@ public class App {
 
         //xmlJaxbParsing();
         //xmlSaxParsing();
-        StudentMYSQLService student = new StudentMYSQLService();
-        student.getStudentById(2);
-
+        dbOperations();
 
     }
 
@@ -127,6 +124,25 @@ public class App {
         }
     }
 
+    public static void dbOperations() throws SQLException {
+        StudentMysqlService studentMysqlService = new StudentMysqlService();
+
+        List<Student> students = new ArrayList<>(studentMysqlService.getAll());
+
+        Student student = studentMysqlService.getById(2);
+        Student student2 = studentMysqlService.getById(3);
+
+        students.add(1,student);
+        students.add(2,student2);
+
+        for (Student s: students) {
+            LOGGER.info(s);
+        }
+
+        
+
+
+    }
 
 
 }

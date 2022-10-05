@@ -18,6 +18,9 @@ public class CourseDAO implements IBaseDAO<Course> {
     private final String DELETE = "DELETE FROM Courses WHERE id = ?;";
     private final String GET_BY_ID = "SELECT * FROM Courses WHERE id = ?;";
     private final String GET_ALL = "SELECT * FROM Courses ORDER BY id;";
+
+    private final String GET_BY_STUDENT_ID = "SELECT * FROM courses JOIN enrollments ON enrollments.courses_id = courses.id JOIN students ON students.id = enrollments.students_id AND students.id = ?";
+
     @Override
     public void insert(Course object) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
@@ -121,11 +124,11 @@ public class CourseDAO implements IBaseDAO<Course> {
     }
 
     public List<Course> getByStudentId(int id) throws SQLException {
-        String query = "SELECT c.id, c.startdate, c.name, c.cost FROM courses AS c INNER JOIN enrollments AS e ON e.courses_id = c.id INNER JOIN students AS s ON s.id = e.students_id AND s.id = ?;";
         Connection c = ConnectionPool.getInstance().getConnection();
         ResultSet rs = null;
         ArrayList<Course> courses = new ArrayList<>();
-        try(PreparedStatement ps = c.prepareStatement(query)){
+        try(PreparedStatement ps = c.prepareStatement(GET_BY_STUDENT_ID)){
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()){
                 courses.add(parser(rs));
