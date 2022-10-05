@@ -11,7 +11,9 @@ import db.parsers.jaxb.Subjects;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
+import db.services.ExamsMysqlService;
 import db.services.StudentMysqlService;
+import db.services.SubjectMysqlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -19,7 +21,9 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +45,7 @@ public class App {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException {
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException, ParseException {
 
         //xmlJaxbParsing();
         //xmlSaxParsing();
@@ -124,7 +128,7 @@ public class App {
         }
     }
 
-    public static void dbOperations() throws SQLException {
+    public static void dbOperations() throws SQLException, ParseException {
         StudentMysqlService studentMysqlService = new StudentMysqlService();
 
         List<Student> students = new ArrayList<>(studentMysqlService.getAll());
@@ -139,8 +143,39 @@ public class App {
             LOGGER.info(s);
         }
 
-        
+        SubjectMysqlService subjectMysqlService = new SubjectMysqlService();
 
+        List<Subject> subjects = subjectMysqlService.getAll();
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        Subject subject = new Subject();
+        subject.setName("Chemistry");
+        subject.setSpecialityId(2);
+
+        subjectMysqlService.insert(subject);
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        // to delete the previous insertion
+        subjectMysqlService.delete(12);
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        ExamsMysqlService examsMysqlService = new ExamsMysqlService();
+
+        Exam exam = new Exam(11, Date.valueOf("2022-03-29"),9,3);
+        examsMysqlService.update(exam);
+
+        for (Exam e: examsMysqlService.getAll()) {
+            LOGGER.info(e);
+        }
 
     }
 
