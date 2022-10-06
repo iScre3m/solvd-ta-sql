@@ -128,11 +128,11 @@ public class App {
         }
     }
 
-    public static void dbOperations() throws SQLException, ParseException {
+    public static void dbOperations() throws SQLException {
 
         IService<Student> studentService = new StudentMysqlService();
 
-        List<Student> students = new ArrayList<>((Collection<? extends Student>) studentService.getAll());
+        List<Student> students = (List<Student>) studentService.getAll();
         Student student = studentService.getById(2);
         Student student2 = studentService.getById(3);
 

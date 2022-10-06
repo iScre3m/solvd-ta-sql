@@ -24,7 +24,7 @@ public interface ISubjectMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "specialityId", column = "specialities_id"),
+            @Result(property = "specialityId", column = "specialities_id")
     })
     @Select(GET_BY_ID)
     Subject getById(int id);
@@ -33,11 +33,8 @@ public interface ISubjectMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "specialityId", column = "specialities_id"),
+            @Result(property = "specialityId", column = "specialities_id")
     })
     List<Subject> getAll();
 
-
-//    @Select("getById")
-//    Subject getById(@Param("id") int id);
 }

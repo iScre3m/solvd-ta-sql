@@ -27,7 +27,7 @@ public interface ISpecialityMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "departmentId", column = "departments_id"),
+            @Result(property = "departmentId", column = "departments_id")
     })
     Speciality getById(int id);
 
@@ -35,7 +35,7 @@ public interface ISpecialityMapper {
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "departmentId", column = "departments_id"),
+            @Result(property = "departmentId", column = "departments_id")
     })
     List<Speciality> getAll();
 }

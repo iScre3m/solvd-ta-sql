@@ -19,5 +19,6 @@
         <mapper class="db.parsers.mybatis.ISubjectMapper"/>
         <mapper class="db.parsers.mybatis.ISpecialityMapper"/>
         <mapper class="db.parsers.mybatis.IExamMapper"/>
+        <mapper class="db.parsers.mybatis.IStudentMapper"/>
     </mappers>
 </configuration>
