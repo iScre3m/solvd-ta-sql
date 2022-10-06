@@ -29,7 +29,7 @@ public class ExamsMysqlService implements IService<Exam>{
     }
 
     @Override
-    public List<?> getAll() throws SQLException {
+    public List<Exam> getAll() throws SQLException {
         return examDAO.getAll();
     }
 }

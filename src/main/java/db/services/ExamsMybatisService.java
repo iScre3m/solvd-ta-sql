@@ -29,7 +29,7 @@ public class ExamsMybatisService implements IService<Exam> {
     }
 
     @Override
-    public List<?> getAll(){
+    public List<Exam> getAll(){
         return examDAO.getAll();
     }
 }

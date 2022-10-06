@@ -30,7 +30,7 @@ public class SubjectMybatisService implements IService<Subject> {
     }
 
     @Override
-    public List<?> getAll() throws SQLException {
+    public List<Subject> getAll() throws SQLException {
         return subjectDAO.getAll();
     }
 

@@ -33,10 +33,6 @@ public class SubjectDAO implements ISubjectMapper{
 
     @Override
     public Subject getById(int id) {
-//        SqlSession session = MyBatisFactory.getSession();
-//        Subject subject = session.getMapper(ISubjectMapper.class).getById(id);
-//        session.commit();
-//        session.close();
         Subject subject = new Subject();
         try (SqlSession session = MyBatisFactory.getSession()) {
             ISubjectMapper mapper = session.getMapper(ISubjectMapper.class);
