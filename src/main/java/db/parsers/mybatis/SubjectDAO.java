@@ -16,9 +16,9 @@ public class SubjectDAO implements ISubjectMapper{
     }
 
     @Override
-    public void update(int id) {
+    public void update(Subject subject) {
         SqlSession session = MyBatisFactory.getSession();
-        session.getMapper(ISubjectMapper.class).update(id);
+        session.getMapper(ISubjectMapper.class).update(subject);
         session.commit();
         session.close();
     }

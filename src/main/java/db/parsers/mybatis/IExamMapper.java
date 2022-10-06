@@ -16,7 +16,7 @@ public interface IExamMapper {
     void insert(Exam exam);
 
     @Update(UPDATE)
-    void update(int id);
+    void update(Exam exam);
 
     @Delete(DELETE)
     void delete(int id);

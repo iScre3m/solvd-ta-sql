@@ -16,7 +16,7 @@ public interface ISubjectMapper {
     void insert(Subject subject);
 
     @Update(UPDATE)
-    void update(int id);
+    void update(Subject subject);
 
     @Delete(DELETE)
     void delete(int id);

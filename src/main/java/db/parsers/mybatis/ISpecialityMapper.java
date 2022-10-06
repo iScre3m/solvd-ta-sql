@@ -18,7 +18,7 @@ public interface ISpecialityMapper {
     void insert(Speciality speciality);
 
     @Update(UPDATE)
-    void update(int id);
+    void update(Speciality speciality);
 
     @Delete(DELETE)
     void delete(int id);

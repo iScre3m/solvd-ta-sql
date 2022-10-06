@@ -15,9 +15,9 @@ public class ExamDAO implements IExamMapper{
     }
 
     @Override
-    public void update(int id) {
+    public void update(Exam exam) {
         SqlSession session = MyBatisFactory.getSession();
-        session.getMapper(IExamMapper.class).update(id);
+        session.getMapper(IExamMapper.class).update(exam);
         session.commit();
         session.close();
     }

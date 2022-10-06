@@ -9,7 +9,7 @@ import db.models.Student;
 import java.sql.SQLException;
 import java.util.List;
 
-public class StudentMysqlService {
+public class StudentMysqlService implements IService<Student>{
 
     private StudentDAO studentDAO = new StudentDAO();
     private CourseDAO courseDAO = new CourseDAO();
@@ -27,59 +27,21 @@ public class StudentMysqlService {
 
         return student;
     }
-
+    @Override
     public void delete(int id) throws SQLException {
         studentDAO.delete(id);
     }
-
+    @Override
     public void insert(Student student) throws SQLException {
         studentDAO.insert(student);
     }
-
+    @Override
     public void update(Student student) throws SQLException {
         studentDAO.update(student);
     }
 
+    @Override
     public List<Student> getAll() throws SQLException {
         return studentDAO.getAll();
     }
-
-    /* Example
-class PassengerMySQLDAO implements IDAO{
-
-    public Passenger readByPlainId(int plainId){
-    List<Passenger> passengers = new ArrayList<Passenger>();
-
-    populate plain with query
-
-    return passengers;
-	}
-}
-
-
-class PlainMySQLService(){
-
-	PlainMySQLDAO plainDAO;
-	PassengerMySQLDAO passengerDAO;
-	PilotMySQLDAO pilotDAO;
-
-
-	public Plain getPlainById(int id){
-		Plain plain = plainDAO.readById(id);
-		List<Passenger> passengers = passengerDAO.readByPlainId(id); create readByPlainId function in passengerDAO
-		plain.setPassengers(passengers);
-		Pilot pilot = pilotDAO.readByPlainId(id);
-		plain.setPilot(pilot);
-		return plain;
-	}
-
-	public void insertPlain(Plain plain){
-
-		plainDao.insert(plain);
-		plain.getPassengers().forEach(p -> (passengerDAO.insert(p); ));
-	}
-
-}
-
-     */
 }

@@ -3,7 +3,6 @@ package db.parsers.mybatis;
 import db.models.Exam;
 import db.models.Speciality;
 import db.models.Subject;
-import db.parsers.json.JacksonParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,5 +22,6 @@ public class MyBatisRunner {
 
         Exam exam = new ExamDAO().getById(3);
         LOGGER.info(exam);
+
     }
 }

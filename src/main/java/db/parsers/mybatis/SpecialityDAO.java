@@ -15,9 +15,9 @@ public class SpecialityDAO implements ISpecialityMapper{
     }
 
     @Override
-    public void update(int id) {
+    public void update(Speciality speciality) {
         SqlSession session = MyBatisFactory.getSession();
-        session.getMapper(ISpecialityMapper.class).update(id);
+        session.getMapper(ISpecialityMapper.class).update(speciality);
         session.commit();
         session.close();
     }

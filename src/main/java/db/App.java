@@ -8,6 +8,7 @@ import db.parsers.jaxb.Exams;
 import db.parsers.jaxb.Jaxb;
 import db.parsers.jaxb.Specialities;
 import db.parsers.jaxb.Subjects;
+import db.parsers.mybatis.ExamDAO;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
@@ -129,51 +130,51 @@ public class App {
     }
 
     public static void dbOperations() throws SQLException, ParseException {
-        StudentMysqlService studentMysqlService = new StudentMysqlService();
-
-        List<Student> students = new ArrayList<>(studentMysqlService.getAll());
-
-        Student student = studentMysqlService.getById(2);
-        Student student2 = studentMysqlService.getById(3);
-
-        students.add(1,student);
-        students.add(2,student2);
-
-        for (Student s: students) {
-            LOGGER.info(s);
-        }
-
-        SubjectMysqlService subjectMysqlService = new SubjectMysqlService();
-
-        List<Subject> subjects = subjectMysqlService.getAll();
-
-        for (Subject s: subjects) {
-            LOGGER.info(s);
-        }
-
-        Subject subject = new Subject();
-        subject.setName("Chemistry");
-        subject.setSpecialityId(2);
-
-        subjectMysqlService.insert(subject);
-
-        for (Subject s: subjects) {
-            LOGGER.info(s);
-        }
-
-        // to delete the previous insertion
-        subjectMysqlService.delete(12);
-
-        for (Subject s: subjects) {
-            LOGGER.info(s);
-        }
+//        StudentMysqlService studentMysqlService = new StudentMysqlService();
+//
+//        List<Student> students = new ArrayList<>(studentMysqlService.getAll());
+//
+//        Student student = studentMysqlService.getById(2);
+//        Student student2 = studentMysqlService.getById(3);
+//
+//        students.add(1,student);
+//        students.add(2,student2);
+//
+//        for (Student s: students) {
+//            LOGGER.info(s);
+//        }
+//
+//        SubjectMysqlService subjectMysqlService = new SubjectMysqlService();
+//
+//        List<Subject> subjects = subjectMysqlService.getAll();
+//
+//        for (Subject s: subjects) {
+//            LOGGER.info(s);
+//        }
+//
+//        Subject subject = new Subject();
+//        subject.setName("Chemistry");
+//        subject.setSpecialityId(2);
+//
+//        subjectMysqlService.insert(subject);
+//
+//        for (Subject s: subjects) {
+//            LOGGER.info(s);
+//        }
+//
+//        // to delete the previous insertion
+//        subjectMysqlService.delete(12);
+//
+//        for (Subject s: subjects) {
+//            LOGGER.info(s);
+//        }
 
         ExamsMysqlService examsMysqlService = new ExamsMysqlService();
 
         Exam exam = new Exam(11, Date.valueOf("2022-03-29"),9,3);
         examsMysqlService.update(exam);
 
-        for (Exam e: examsMysqlService.getAll()) {
+        for (Object e: examsMysqlService.getAll()) {
             LOGGER.info(e);
         }
 
