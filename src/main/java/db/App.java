@@ -162,57 +162,57 @@ public class App {
         for (Student s: students) {
             LOGGER.info(s);
         }
-//
-//
-//        IService subjectService = null;
-//        try{
-//            subjectService = ServiceFactory.create("db.services.SubjectMyBatisService");
-//        } catch (ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException |
-//                 NoSuchMethodException e) {
-//            LOGGER.error("Error creating SubjectService");
-//            LOGGER.error(e.getMessage());
-//        }
-//
-//        List<Subject> subjects = (List<Subject>) subjectService.getAll();
-//
-//        for (Subject s: subjects) {
-//            LOGGER.info(s);
-//        }
-//
-//        Subject subject = new Subject();
-//        subject.setName("Chemistry");
-//        subject.setSpecialityId(2);
-//
-//        subjectService.insert(subject);
-//
-//        for (Subject s: subjects) {
-//            LOGGER.info(s);
-//        }
-//
-//        // to delete the previous insertion
-//        subjectService.delete(12);
-//
-//        for (Subject s: subjects) {
-//            LOGGER.info(s);
-//        }
-//
-//        IService examService = null;
-//
-//        try{
-//            examService = ServiceFactory.create("db.services.ExamMyBatisService");
-//        }catch (Exception e){
-//            LOGGER.error("Error creating ExamService");
-//            LOGGER.error(e.getMessage());
-//        }
-//
-//        Exam exam = new Exam(11, Date.valueOf("2022-03-29"),9,3);
-//
-//        assert examService != null;
-//        examService.update(exam);
-//
-//        for (Object e: examService.getAll()) {
-//            LOGGER.info(e);
-//        }
+
+
+        IService subjectService = null;
+        try{
+            subjectService = ServiceFactory.create("db.services.SubjectMyBatisService");
+        } catch (ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException |
+                 NoSuchMethodException e) {
+            LOGGER.error("Error creating SubjectService");
+            LOGGER.error(e.getMessage());
+        }
+
+        List<Subject> subjects = (List<Subject>) subjectService.getAll();
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        Subject subject = new Subject();
+        subject.setName("Chemistry");
+        subject.setSpecialityId(2);
+
+        subjectService.insert(subject);
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        // to delete the previous insertion
+        subjectService.delete(12);
+
+        for (Subject s: subjects) {
+            LOGGER.info(s);
+        }
+
+        IService examService = null;
+
+        try{
+            examService = ServiceFactory.create("db.services.ExamMyBatisService");
+        }catch (Exception e){
+            LOGGER.error("Error creating ExamService");
+            LOGGER.error(e.getMessage());
+        }
+
+        Exam exam = new Exam(11, Date.valueOf("2022-03-29"),9,3);
+
+        assert examService != null;
+        examService.update(exam);
+
+        for (Object e: examService.getAll()) {
+            LOGGER.info(e);
+        }
 
     }
 
