@@ -1,8 +1,6 @@
 package db.services;
 
-import db.dao.ClassDAO;
-import db.dao.CourseDAO;
-import db.dao.StudentDAO;
+import db.dao.*;
 import db.models.Class;
 import db.models.Course;
 import db.models.Student;
@@ -15,6 +13,8 @@ public class StudentMysqlService implements IService<Student>{
     private CourseDAO courseDAO = new CourseDAO();
     private ClassDAO classDAO = new ClassDAO();
 
+    private IClassStudentId classDAOStudent = (IClassStudentId) new ClassDAOStudent(classDAO);
+
 
     public Student getById(int id) throws SQLException {
         Student student = studentDAO.getById(id);
@@ -22,7 +22,7 @@ public class StudentMysqlService implements IService<Student>{
         List<Course> courses = courseDAO.getByStudentId(id);
         student.setCourses(courses);
 
-        List<Class> classes = classDAO.getByStudentId(id);
+        List<Class> classes = classDAOStudent.getByStudentId(id);
         student.setClasses(classes);
 
         return student;
