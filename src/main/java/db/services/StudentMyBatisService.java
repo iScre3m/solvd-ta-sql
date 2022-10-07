@@ -9,6 +9,7 @@ import db.models.Student;
 import db.parsers.mybatis.StudentDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentMyBatisService implements IService<Student>{
@@ -45,7 +46,18 @@ public class StudentMyBatisService implements IService<Student>{
     }
 
     @Override
-    public List<Student> getAll(){
-        return studentDAO.getAll();
+    public List<Student> getAll() throws SQLException {
+        List<Student> students = studentDAO.getAll();
+
+        for (Student student : students) {
+            int studentId = student.getId();
+            List<Course> courses = courseDAO.getByStudentId(studentId);
+            student.setCourses(courses);
+
+            List<Class> classes = classDAO.getByStudentId(studentId);
+            student.setClasses(classes);
+        }
+
+        return students;
     }
 }
