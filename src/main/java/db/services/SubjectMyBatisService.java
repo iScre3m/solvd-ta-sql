@@ -6,7 +6,7 @@ import db.parsers.mybatis.SubjectDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SubjectMybatisService implements IService<Subject> {
+public class SubjectMyBatisService implements IService<Subject> {
 
     private SubjectDAO  subjectDAO = new SubjectDAO();
     @Override

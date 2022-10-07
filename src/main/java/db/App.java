@@ -8,7 +8,6 @@ import db.parsers.jaxb.Exams;
 import db.parsers.jaxb.Jaxb;
 import db.parsers.jaxb.Specialities;
 import db.parsers.jaxb.Subjects;
-import db.parsers.mybatis.ExamDAO;
 import db.parsers.sax.ExamHandler;
 import db.parsers.sax.SpecialityHandler;
 import db.parsers.sax.SubjectHandler;
@@ -20,13 +19,12 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class App {
@@ -45,31 +43,47 @@ public class App {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException, ParseException {
+    public static void main(String[] args) throws SQLException {
 
-        //xmlJaxbParsing();
-        //xmlSaxParsing();
+        xmlJaxbParsing();
+        xmlSaxParsing();
         dbOperations();
 
     }
 
-    public static void xmlSaxParsing() throws ParserConfigurationException, IOException, SAXException {
+    public static void xmlSaxParsing(){
         ExamHandler examHandler = new ExamHandler();
-        List<Exam> exams = examHandler.readDataFromXML(EXAM_XML_PATH);
-        for (Exam exam: exams) {
-            LOGGER.info(exam);
+        try{
+            List<Exam> exams = examHandler.readDataFromXML(EXAM_XML_PATH);
+            for (Exam exam: exams) {
+                LOGGER.info(exam);
+            }
+        }catch (IOException | ParserConfigurationException |  SAXException e){
+            LOGGER.error("Failed reading EXAM XML");
+            LOGGER.error(e.getMessage());
         }
-        SpecialityHandler specialityHandler = new SpecialityHandler();
-        List<Speciality> specialities = specialityHandler.readDataFromXML(SPECIALITY_XML_PATH);
-        for (Speciality speciality: specialities) {
-            LOGGER.info(speciality);
+
+        try{
+            SpecialityHandler specialityHandler = new SpecialityHandler();
+            List<Speciality> specialities = specialityHandler.readDataFromXML(SPECIALITY_XML_PATH);
+            for (Speciality speciality: specialities) {
+                LOGGER.info(speciality);
+            }
+        } catch (IOException | ParserConfigurationException |  SAXException e){
+            LOGGER.error("Failed reading SPECIALITY XML");
+            LOGGER.error(e.getMessage());
         }
-        SubjectHandler subjectHandler = new SubjectHandler();
-        List<Subject> subjects = subjectHandler.readDataFromXML(SUBJECT_XML_PATH);
-        for (Subject subject: subjects) {
-            LOGGER.info(subject);
+        try{
+            SubjectHandler subjectHandler = new SubjectHandler();
+            List<Subject> subjects = subjectHandler.readDataFromXML(SUBJECT_XML_PATH);
+            for (Subject subject: subjects) {
+                LOGGER.info(subject);
+            }
+        } catch (IOException | ParserConfigurationException |  SAXException e) {
+            LOGGER.error("Failed reading SUBJECT XML");
+            LOGGER.error(e.getMessage());
         }
-        }
+    }
 
     public static void xmlJaxbParsing(){
         try
@@ -124,27 +138,40 @@ public class App {
             }
 
         } catch (ParseException | JAXBException e) {
-            throw new RuntimeException(e);
+            LOGGER.error(e.getMessage());
         }
     }
 
     public static void dbOperations() throws SQLException {
 
-        IService<Student> studentService = new StudentMysqlService();
+        IService studentService = null;
+        try{
+            studentService = ServiceFactory.create("db.services.StudentMyBatisService");
+        }catch (Exception e){
+            LOGGER.error("Error creating studentService");
+            LOGGER.error(e.getMessage());
+        }
 
         List<Student> students = (List<Student>) studentService.getAll();
-        Student student = studentService.getById(2);
-        Student student2 = studentService.getById(3);
+        Student student = (Student) studentService.getById(2);
+        Student student2 = (Student) studentService.getById(3);
 
         students.add(1,student);
         students.add(2,student2);
-
 
         for (Student s: students) {
             LOGGER.info(s);
         }
 
-        IService<Subject> subjectService = new SubjectMybatisService();
+
+        IService subjectService = null;
+        try{
+            subjectService = ServiceFactory.create("db.services.SubjectMyBatisService");
+        } catch (ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException |
+                 NoSuchMethodException e) {
+            LOGGER.error("Error creating SubjectService");
+            LOGGER.error(e.getMessage());
+        }
 
         List<Subject> subjects = (List<Subject>) subjectService.getAll();
 
@@ -169,9 +196,18 @@ public class App {
             LOGGER.info(s);
         }
 
-        IService<Exam> examService = new ExamsMybatisService();
+        IService examService = null;
+
+        try{
+            examService = ServiceFactory.create("db.services.ExamMyBatisService");
+        }catch (Exception e){
+            LOGGER.error("Error creating ExamService");
+            LOGGER.error(e.getMessage());
+        }
 
         Exam exam = new Exam(11, Date.valueOf("2022-03-29"),9,3);
+
+        assert examService != null;
         examService.update(exam);
 
         for (Object e: examService.getAll()) {

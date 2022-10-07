@@ -5,7 +5,7 @@ import db.parsers.mybatis.ExamDAO;
 
 import java.util.List;
 
-public class ExamsMybatisService implements IService<Exam> {
+public class ExamsMyBatisService implements IService<Exam> {
 
     private ExamDAO examDAO = new ExamDAO();
     @Override
