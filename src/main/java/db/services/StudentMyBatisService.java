@@ -1,16 +1,32 @@
 package db.services;
 
 
+import db.dao.ClassDAO;
+import db.dao.CourseDAO;
+import db.models.Class;
+import db.models.Course;
 import db.models.Student;
 import db.parsers.mybatis.StudentDAO;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class StudentMyBatisService implements IService<Student>{
     private StudentDAO studentDAO = new StudentDAO();
+    private ClassDAO classDAO = new ClassDAO();
+    private CourseDAO courseDAO = new CourseDAO();
+
     @Override
-    public Student getById(int id) {
-        return studentDAO.getById(id);
+    public Student getById(int id) throws SQLException {
+        Student student = studentDAO.getById(id);
+
+        List<Course> courses = courseDAO.getByStudentId(id);
+        student.setCourses(courses);
+
+        List<Class> classes = classDAO.getByStudentId(id);
+        student.setClasses(classes);
+
+        return student;
     }
 
     @Override
