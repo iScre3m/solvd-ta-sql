@@ -6,11 +6,11 @@ import db.models.Student;
 import java.sql.SQLException;
 import java.util.List;
 
-public abstract class ClassDecorator implements IBaseDAO<Class>{
+public abstract class ClassDecorator implements IClassStudentId{
 
-    protected IBaseDAO ClassDecorated;
+    protected IClassStudentId ClassDecorated;
 
-    public ClassDecorator(IBaseDAO classDecorated) {
+    public ClassDecorator(IClassStudentId classDecorated) {
         ClassDecorated = classDecorated;
     }
 
@@ -31,7 +31,7 @@ public abstract class ClassDecorator implements IBaseDAO<Class>{
 
     @Override
     public Class getById(int id) throws SQLException {
-        return (Class) this.ClassDecorated.getById(id);
+        return this.ClassDecorated.getById(id);
     }
 
     @Override

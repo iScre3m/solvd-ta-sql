@@ -13,7 +13,7 @@ public class StudentMysqlService implements IService<Student>{
     private CourseDAO courseDAO = new CourseDAO();
     private ClassDAO classDAO = new ClassDAO();
 
-    private IClassStudentId classDAOStudent = (IClassStudentId) new ClassDAOStudent(classDAO);
+    private IClassStudentId classDAOStudent = new ClassDAOStudent((IClassStudentId) classDAO);
 
 
     public Student getById(int id) throws SQLException {

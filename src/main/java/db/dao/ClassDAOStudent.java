@@ -18,7 +18,7 @@ public class ClassDAOStudent extends ClassDecorator{
 
     private final String GET_BY_STUDENT_ID = "SELECT classes.id, classes.professors_id,classes.courses_id,classes.date,classes.classrooms_id,classes.subjects_id FROM classes JOIN group_of_students ON group_of_students.classes_id = classes.id JOIN students ON students.id = group_of_students.students_id AND students.id = ?";
 
-    public ClassDAOStudent(IBaseDAO classDecorated) {
+    public ClassDAOStudent(IClassStudentId classDecorated) {
         super(classDecorated);
     }
 
