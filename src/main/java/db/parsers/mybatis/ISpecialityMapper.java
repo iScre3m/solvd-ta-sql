@@ -8,10 +8,10 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface ISpecialityMapper {
-    String INSERT = "INSERT INSERT INTO Specialities(name,departments_id) VALUES(${name},${departments_id});";
-    String UPDATE = "UPDATE Specialities SET name ${name}, departments_id = ${departments_id} WHERE id = ${id};";
-    String DELETE = "DELETE FROM Specialities WHERE id = ${id};";
-    String GET_BY_ID = "SELECT * FROM Specialities WHERE id = ${id};";
+    String INSERT = "INSERT INTO Specialities(name,departments_id) VALUES(#{name},#{departmentId});";
+    String UPDATE = "UPDATE Specialities SET name #{name}, departments_id = #{departmentId} WHERE id = #{id};";
+    String DELETE = "DELETE FROM Specialities WHERE id = #{id};";
+    String GET_BY_ID = "SELECT * FROM Specialities WHERE id = #{id};";
     String GET_ALL = "SELECT * FROM Specialities ORDER BY id;";
 
     @Insert(INSERT)

@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface ISubjectMapper {
-    String INSERT = "INSERT INSERT INTO Subjects(name,specialities_id) VALUES(${name},${specialities_id});";
-    String UPDATE = "UPDATE Subjects SET name ${name}, specialities_id = ${specialities_id} WHERE id = ${id};";
-    String DELETE = "DELETE FROM Subjects WHERE id = ${id};";
-    String GET_BY_ID = "SELECT * FROM Subjects WHERE id = ${id};";
+    String INSERT = "INSERT INTO Subjects(name,Specialities_id) VALUES(#{name},#{specialityId});";
+    String UPDATE = "UPDATE Subjects SET name #{name}, Specialities_id = #{specialityId} WHERE id = #{id};";
+    String DELETE = "DELETE FROM Subjects WHERE id = #{id};";
+    String GET_BY_ID = "SELECT * FROM Subjects WHERE id = #{id};";
     String GET_ALL = "SELECT * FROM Subjects ORDER BY id;";
 
     @Insert(INSERT)

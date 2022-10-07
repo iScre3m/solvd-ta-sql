@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface IExamMapper {
-    String INSERT = "INSERT INTO Exams(date,courses_id,subjects_id) VALUES(${date},${courses_id},${subjects_id});";
-    String UPDATE = "UPDATE Exams SET date = ${date}, courses_id = ${courses_id}, subjects_id = ${subjects_id} WHERE id = ${id};";
-    String DELETE = "DELETE FROM Exams WHERE id = ${id};";
-    String GET_BY_ID = "SELECT * FROM Exams WHERE id = ${id};";
+    String INSERT = "INSERT INTO Exams(date,courses_id,subjects_id) VALUES(${date},#{courseId},#{subjectId});";
+    String UPDATE = "UPDATE Exams SET date = #{date}, courses_id = #{courseId}, subjects_id = #{subjectId} WHERE id = ${id};";
+    String DELETE = "DELETE FROM Exams WHERE id = #{id};";
+    String GET_BY_ID = "SELECT * FROM Exams WHERE id = #{id};";
     String GET_ALL = "SELECT * FROM Exams ORDER BY id;";
 
     @Insert(INSERT)

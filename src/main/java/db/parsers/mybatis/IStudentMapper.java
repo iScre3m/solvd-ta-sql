@@ -7,10 +7,10 @@ import java.util.List;
 
 
 public interface IStudentMapper {
-    String INSERT = "INSERT INTO Students(firstName,lastName,email) VALUES(${firstName},${lastName},${email});";
-    String UPDATE = "UPDATE Students SET firstName = ${firstName}, lastName = ${lastName}, email = ${email} WHERE id = ${id};";
-    String DELETE = "DELETE FROM Students WHERE id = ${id};";
-    String GET_BY_ID = "SELECT * FROM Students WHERE id = ${id};";
+    String INSERT = "INSERT INTO Students(firstName,lastName,email) VALUES(#{firstName},#{lastName},#{email});";
+    String UPDATE = "UPDATE Students SET firstName = #{firstName}, lastName = #{lastName}, email = #{email} WHERE id = #{id};";
+    String DELETE = "DELETE FROM Students WHERE id = #{id};";
+    String GET_BY_ID = "SELECT * FROM Students WHERE id = #{id};";
     String GET_ALL = "SELECT * FROM Students ORDER BY id;";
 
     @Insert(INSERT)

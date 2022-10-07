@@ -163,7 +163,6 @@ public class App {
             LOGGER.info(s);
         }
 
-
         IService subjectService = null;
         try{
             subjectService = ServiceFactory.create("db.services.SubjectMyBatisService");
@@ -173,9 +172,7 @@ public class App {
             LOGGER.error(e.getMessage());
         }
 
-        List<Subject> subjects = (List<Subject>) subjectService.getAll();
-
-        for (Subject s: subjects) {
+        for (Object s: subjectService.getAll()) {
             LOGGER.info(s);
         }
 
@@ -185,21 +182,21 @@ public class App {
 
         subjectService.insert(subject);
 
-        for (Subject s: subjects) {
+        for (Object s: subjectService.getAll()) {
             LOGGER.info(s);
         }
 
         // to delete the previous insertion
         subjectService.delete(12);
 
-        for (Subject s: subjects) {
+        for (Object s: subjectService.getAll()) {
             LOGGER.info(s);
         }
 
         IService examService = null;
 
         try{
-            examService = ServiceFactory.create("db.services.ExamMyBatisService");
+            examService = ServiceFactory.create("db.services.ExamsMyBatisService");
         }catch (Exception e){
             LOGGER.error("Error creating ExamService");
             LOGGER.error(e.getMessage());
