@@ -1,6 +1,7 @@
 package db.models;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -64,9 +65,10 @@ public class Course {
 
     @Override
     public String toString() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return "Course{" +
                 "id=" + id +
-                ", startDate=" + startDate +
+                ", startDate=" + simpleDateFormat.format(startDate) +
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
                 ", students=" + students +

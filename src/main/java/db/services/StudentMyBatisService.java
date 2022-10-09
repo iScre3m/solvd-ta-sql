@@ -1,15 +1,14 @@
 package db.services;
 
 
-import db.dao.ClassDAO;
-import db.dao.CourseDAO;
+
+import db.parsers.mybatis.ClassDAO;
+import db.parsers.mybatis.CourseDAO;
 import db.models.Class;
 import db.models.Course;
 import db.models.Student;
 import db.parsers.mybatis.StudentDAO;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentMyBatisService implements IService<Student>{
